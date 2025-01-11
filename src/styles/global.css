@@ -5,7 +5,7 @@
  */
 
 :root {
-  --accent: #2337ff;
+  --accent: #006bc8;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
@@ -39,7 +39,7 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.7;
 }
 main {
@@ -54,24 +54,27 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.5rem 0;
+  margin: 0.8em 0 1rem;
   color: rgb(var(--black));
   line-height: 1.2;
 }
 h1 {
-  font-size: 3.052em;
+  font-size: 2.8em;
 }
 h2 {
-  font-size: 2.441em;
+  font-size: 2.4em;
 }
 h3 {
-  font-size: 1.953em;
+  font-size: 1.8em;
 }
 h4 {
-  font-size: 1.563em;
+  font-size: 1.5em;
 }
 h5 {
   font-size: 1.25em;
+}
+h6 {
+  font-size: 1em;
 }
 strong,
 b {
@@ -87,7 +90,7 @@ p {
   margin-bottom: 1em;
 }
 .prose p {
-  margin-bottom: 2em;
+  margin-bottom: 1.8em;
 }
 textarea {
   width: 100%;
@@ -103,6 +106,14 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+}
+figure {
+  margin: 1em 0 2em;
+}
+figcaption {
+  font-size: 0.8em;
+  color: rgb(var(--gray));
+  text-align: center;
 }
 code {
   padding: 2px 5px;
@@ -125,14 +136,21 @@ blockquote {
 hr {
   border: none;
   border-top: 1px solid rgb(var(--gray-light));
+  margin: 1em 0 2em;
 }
 @media (max-width: 720px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
   main {
     padding: 1em;
   }
+}
+ul {
+  margin: 0 0 2em;
+}
+ul > li {
+  margin-bottom: 0.25em;
 }
 
 .sr-only {
