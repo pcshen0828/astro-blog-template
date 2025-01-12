@@ -3,3 +3,5 @@
 
 export const SITE_TITLE = 'pcshen';
 export const SITE_DESCRIPTION = 'pcshen | personal blog';
+
+export const HTML_LANG = 'zh-TW';

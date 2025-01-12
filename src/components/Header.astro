@@ -6,9 +6,8 @@ import { Icon } from 'astro-icon/components';
 
 <header>
   <nav>
-    <h2><a href='/'>{SITE_TITLE}</a></h2>
+    <h2 class='homepage-link'><a href='/'>{SITE_TITLE}</a></h2>
     <div class='internal-links'>
-      <HeaderLink href='/'>Home</HeaderLink>
       <HeaderLink href='/blog'>Blog</HeaderLink>
       <HeaderLink href='/about'>About</HeaderLink>
     </div>
@@ -55,14 +54,20 @@ import { Icon } from 'astro-icon/components';
     border-bottom: 4px solid transparent;
     text-decoration: none;
   }
-  nav a.active {
+  .internal-links a.active {
     text-decoration: none;
     border-bottom-color: var(--accent);
+  }
+  .homepage-link a:hover,
+  .internal-links a:hover,
+  .social-links a:hover {
+    color: rgb(var(--gray));
   }
   .social-links,
   .social-links a {
     display: flex;
   }
+
   @media (max-width: 720px) {
     .social-links {
       display: none;
