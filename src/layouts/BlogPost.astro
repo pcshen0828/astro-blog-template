@@ -16,41 +16,70 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <BaseHead title={title} description={description} />
     <style>
       main {
-        width: calc(100% - 2em);
+        width: 100%;
         max-width: 100%;
         margin: 0;
+        padding: 0 0 3em;
       }
       .hero-image {
         width: 100%;
+        height: 400px;
+        position: relative;
+
+        @media screen and (max-width: 768px) {
+          height: 360px;
+        }
+
+        @media screen and (max-width: 480px) {
+          height: 300px;
+        }
       }
       .hero-image img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
+        position: absolute;
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
       }
       .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.7);
+        width: 100%;
+        height: 100%;
       }
       .title h1 {
-        margin: 0 0 0.5em 0;
+        line-height: 1.2;
+        margin: 0;
+
+        @media screen and (max-width: 768px) {
+          font-size: 2.5em;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 2em;
+        }
       }
       .date {
         margin-bottom: 0.5em;
-        color: rgb(var(--gray));
+        color: rgb(var(--gray-dark));
       }
       .last-updated-on {
         font-style: italic;
+      }
+      .layout {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+      }
+      hr {
+        margin: 1em 0 2em;
+      }
+      .prose {
+        color: rgb(var(--gray-dark));
       }
     </style>
   </head>
@@ -60,30 +89,28 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <main>
       <article>
         <div class='hero-image'>
-          {
-            heroImage && (
-              <img width={1020} height={510} src={heroImage} alt='' />
-            )
-          }
-        </div>
-        <div class='prose'>
+          <img src={heroImage} alt='' />
           <div class='title'>
-            <div class='date'>
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class='last-updated-on'>
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
+            <div class='layout'>
+              <div class='date'>
+                <FormattedDate date={pubDate} />
+                {
+                  updatedDate && (
+                    <div class='last-updated-on'>
+                      Last updated on <FormattedDate date={updatedDate} />
+                    </div>
+                  )
+                }
+              </div>
+              <h1>{title}</h1>
             </div>
-            <h1>{title}</h1>
-            <hr />
           </div>
-          <slot />
         </div>
       </article>
+      <hr />
+      <div class='prose layout'>
+        <slot />
+      </div>
     </main>
     <Footer />
   </body>
